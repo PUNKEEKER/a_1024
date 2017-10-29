@@ -1,0 +1,40 @@
+
+.main .nav-sub {
+    height: 90px;
+    width: auto;
+    position: relative;
+    background: #EDEDED;
+    /*background-color: burlywood;*/
+}
+
+.main .nav-sub .nav-container{
+    height: 28px;
+    width: 1220px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    /*background-color: aqua;*/
+}
+.main .nav-sub .nav-container .nav-list{
+    height: 28px;
+    width: auto;
+    position: absolute;
+    display: flex;
+    /*background-color: #242424;*/
+}
+.main .nav-sub .nav-container .nav-list li a{
+    line-height: 28px;
+    padding: 0 20px;
+    font-size: 14px;
+    font-family: Microsoft Yahei;
+    color: #666;
+    transition: all .15s ease-out;
+}
+.main .nav-sub .nav-container .nav-list li.active{
+    font-weight: 700;
+}
+.main .nav-sub .nav-container .nav-list li a:hover{
+    color: #7D9ADF;
+}
+

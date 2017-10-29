@@ -1,0 +1,72 @@
+body{
+    background-color: #EDEDED;
+}
+.main-content{
+    width:auto;
+    height: 4330px;
+    position: relative;
+}
+.main .page-home{
+    width: 1220px;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+    /*background-color: burlywood;*/
+}
+
+.main .page-home .banner-3d{
+    width: 1220px;
+    height: 500px;
+    border-radius: 10px;
+    /*background-color: #c8c8c8;*/
+    transform-style: preserve-3d;
+    perspective: 3000px;
+    cursor: pointer;
+}
+.main .page-home .banner-3d .banner-3d-slide{
+    width: 1220px;
+    height: 500px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    /*transform: rotateX(8deg) rotateY(-6deg);*/
+    /*border-radius: 15px;*/
+    /*background-color: #c8c8c8;*/
+}
+
+.main .page-home .banner-3d .banner-3d-slide div{
+    width: 1220px;
+    height: 500px;
+    position: absolute;
+    border-radius: 10px;
+    overflow: hidden;
+    /*background-color: #c8c8c8;*/
+}
+
+.main .page-home .banner-3d .banner-3d-slide div.banner-3d-shadow {
+
+    background: url(../images/shadow.png) center no-repeat;
+    opacity: 0;
+    width: 1340px;
+    height: 620px;
+    left:50%;
+    top:50%;
+    margin-left:-670px;
+    margin-top:-310px;
+}
+
+.main .page-home .banner-3d .banner-3d-slide div.banner-3d-box1 {
+    background: url(../images/w1.png) center no-repeat;
+
+}
+
+.main .page-home .banner-3d .banner-3d-slide div.banner-3d-box2 {
+    background: url(../images/w2.png) center no-repeat;
+
+}
+
+.main .page-home .banner-3d .banner-3d-slide div.banner-3d-box3 {
+    background: url(../images/w3.png) center no-repeat;
+
+}
