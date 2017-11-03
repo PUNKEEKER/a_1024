@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background-color: #16314C;
+        }
+        .baba{
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        .nav{
+            width: 800px;
+            height: 45px;
+            background-color: #fff;
+            z-index: 999;
+
+            /*position: fixed;*/
+            /*margin: 0 auto;*/
+
+        }
+
+        .nav-con {
+            height: 45px;
+            width: 540px;
+            /*background-color: #fff;*/
+            margin: 0 auto;
+            border-radius: 8px;;
+            text-align: center;
+            position: relative;
+        }
+
+        .nav-con ul {
+            position: relative;
+            font-size: 0;
+        }
+
+        .nav-con ul li {
+            display: inline-block;
+            width: 90px;
+            height: 45px;
+            font: 18px/45px microsoft yahei;
+            /*background-color: #E74F4D;*/
+            text-align: center;
+            margin-left: 0 7px;
+            cursor: pointer;
+        }
+
+        span {
+            width: 90px;
+            height: 30px;
+            border-radius: 15px;
+            opacity: 0.8;
+            background-color: #E74F4D;
+            position: absolute;
+            left: 130px;
+            opacity: 0.7;
+
+            /*垂直居中*/
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /*---------------------------------------*/
+        .top {
+            width: 800px;
+            height: 100px;
+            background-color: #000;
+            opacity: 0.5;
+            /*margin: 0 auto;*/
+            color: #fff;
+        }
+
+        .box {
+            width: 800px;
+            height: 2000px;
+            background-color: #7B8B70;
+            opacity: 0.9;
+            /*margin: 0 auto;*/
+        }
+        .fixed{
+            position: fixed;
+            top: 0;
+        }
+
+
+
+    </style>
+
+    <script>
+        window.onload = function () {
+
+            //需求1：鼠标放到哪个li上面，span对应移动到该li上。移开后，回到原位置。
+            //需求2：鼠标点击那个li记录该li标签，移开的时候span回到该记录的li标签上。
+            //        var nav = document.getElementsByClassName("nav")[0];
+            var span = document.getElementsByTagName("span")[0];
+            var liArr = document.getElementsByTagName("li");
+            var liWidth = liArr[0].offsetWidth;
+
+
+            var count = 0;
+            for (var i = 0; i < liArr.length; i++) {
+                liArr[i].index = i;
+                liArr[i].onmouseover = function () {
+                    //鼠标放到哪个li上面，span对应移动到该li上。移开后，回到原位置。
+                    fn(span, this.index * liWidth, 20)
+                }
+
+                liArr[i].onmouseout = function () {
+                    fn(span, count * liWidth, 20)
+                }
+
+                liArr[i].onclick = function () {
+                    //需要一个计数器，每次点击以后把所以只记录下来
+                    count = this.index;
+                    fn(span, count * liWidth, 10)
+                }
+
+            }
+
+
+
+
+
+            function fn(ele, target, speed) {
+                clearInterval(ele.timer);
+                ele.timer = setInterval(function () {
+                    //步长应该越来越小。缓动算法
+                    //最后10像素的时候都是1像素1像素的向目标位置移动，就能够到达指定位置。
+                    var step = (target - ele.offsetLeft) / 10;
+                    //二次加工：大于0向上取整，小于0向下取整
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+                    ele.style.left = ele.offsetLeft + step + "px";
+                    //跳出条件：目标位置-当前位置，小于步长
+                    var val = target - ele.offsetLeft;
+                    if (Math.abs(val) <= Math.abs(step)) {
+                        ele.style.left = target + "px";
+                        clearInterval(ele.timer);
+                    }
+                }, speed)
+            }
+
+
+            //---------------------------------------------------------
+            var ttp = document.getElementsByClassName("top")[0];
+            var nav = document.getElementsByClassName("nav")[0];
+            var box = document.getElementsByClassName("box")[0];
+            var topHeight = ttp.offsetHeight;
+
+            window.onscroll = function () {
+                //判断 ，被卷曲的头部的大小
+                if (scroll().top > topHeight) {
+                    nav.className += " fixed";
+                    //第二个盒子不占位置了，所以我们给第三个盒子一个上padding占位置，不出现盒子抖动问题
+                    box.style.paddingTop = nav.offsetHeight + "px";
+                } else {
+                    nav.className = "nav";
+                    //清零
+                    box.style.paddingTop = 0;
+                }
+
+            }
+
+
+            function scroll() {
+                return {
+                    "top": window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop,
+                    "left": window.pageXOffset || document.body.scrollLeft || document.documentElement.scrollLeft
+                }
+            }
+
+
+        }
+
+    </script>
+
+
+
+</head>
+<body>
+<div class="baba">
+    <div class="top">1<br >2<br >3<br >4<br >5</div>
+    <div class="nav">
+        <div class="nav-con">
+            <span></span>
+            <ul>
+                <li>首页</li>
+                <li>JavaEE</li>
+                <li>PHP</li>
+                <li>UI/UE</li>
+                <li>C/C++</li>
+                <li>Python</li>
+            </ul>
+        </div>
+    </div>
+    <div class="box">1<br >2<br >3<br >4<br >5<br >6<br ></div>
+</div>
+
+
+
+
+</script>
+
+
+</body>
+</html>

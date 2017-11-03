@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*
+        3D-ratate 旋转
+        父盒子定义 景深perspective: 1000px;
+        子元素获得透视，则transform: rotate(x,y)实现3D效果
+        */
+
+        .box {
+            width: 1200px;
+            height: 200px;
+            margin: 100px auto;
+            background-color: deepskyblue;
+
+            /*类似浮动，并居中*/
+            display: flex;
+            justify-content: space-around;
+
+            /* 透视*/
+            perspective: 1000px;
+        }
+
+        .box > div {
+            width: 300px;
+            height: 200px;
+            background: #0D3349;
+            /*float: left;*/
+            /*margin-right: 50px;*/
+        }
+
+
+        /*rotateX*/
+        .box div:nth-child(1) {
+            transition: all 2s;
+        }
+        .box div:nth-child(1):hover {
+            transform: rotateX(360deg);
+        }
+
+        /*rotateY*/
+        .box div:nth-child(2) {
+            background-color: #E74F4D;
+            transition: all 1s;
+        }
+        .box div:nth-child(2):hover {
+            transform: rotateY(360deg);
+        }
+
+        /*rotateZ*/
+        .box div:nth-child(3) {
+            background-color: #a7abad;
+            transition: all 1s;
+        }
+        .box div:nth-child(3):hover {
+            transform:rotateZ(360deg);
+        }
+
+
+
+        /*
+        3D-translate 移动
+        transform: translateX( )
+        transform: translateY( )
+        transform: translateZ( ) 在Z轴移动要在父盒子添加透视perspective
+        */
+        .box2{
+            width: 1500px;
+            height: 200px;
+            margin: 100px auto;
+            background-color: deepskyblue;
+            display: flex;
+            justify-content: space-around;
+            perspective: 1000px;
+        }
+
+        .box2 > div {
+            width: 300px;
+            height: 200px;
+            background: #0D3349;
+        }
+
+        /*translateX*/
+        .box2 div:nth-child(1) {
+            background-color: #a7abad;
+            transition: all 2s;
+         }
+        .box2 div:nth-child(1):hover {
+            transform:translateX(300px);
+        }
+
+        /*translateY*/
+        .box2 div:nth-child(2) {
+            transition: all 2s;
+        }
+        .box2 div:nth-child(2):hover {
+            transform:translateY(300px);
+        }
+
+        /*translateZ*/
+        .box2 div:nth-child(3) {
+            background-color: #E74F4D;
+            transition: all 2s;
+        }
+        .box2 div:nth-child(3):hover {
+            transform:translateZ(300px);
+        }
+
+
+
+        /*3D-transform-style*/
+        .out{
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+            background-color: #a7abad;
+            margin:100px auto;
+
+            transform:rotateY(66deg);
+
+            /*可以让里面的子盒子保持3d 效果，加给父盒子 */
+            /* preseve-3d: 让子盒子 位于3d空间里面*/
+            /*flat： 子盒子被扁平化*/
+            transform-style:preserve-3d;
+        }
+
+        .in{
+            width: 300px;
+            height: 400px;
+            background-color: #E74F4D;
+            margin:50px auto;
+            transform:rotateX(132deg);
+            border: 1px solid #000;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <div cla>rotateX</div>
+    <div cla>rotateY</div>
+    <div cla>rotateZ</div>
+</div>
+
+<div class="box2">
+    <div class="">translateX</div>
+    <div class="">ranslateY</div>
+    <div class="">ranslateZ</div>
+</div>
+
+<div class="out">
+    <div class="in"></div>
+</div>
+</body>
+</html>
