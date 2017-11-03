@@ -1,0 +1,17 @@
+
+#scroll>div{
+    width: 100%;
+    overflow: hidden;
+}
+#scroll>div:nth-child(1){
+    background-color: #1bbc9b;
+}
+#scroll>div:nth-child(2){
+    background-color: #4BBFC3;
+}
+#scroll>div:nth-child(3){
+    background-color: #7BAABE;
+}
+#scroll>div:nth-child(4){
+    background-color: #f90;
+}
