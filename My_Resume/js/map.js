@@ -5,7 +5,7 @@ var init = function () {
     //});
 
 
-    var center = new qq.maps.LatLng(26.055987719360242, 119.29263532161713);
+    var center = new qq.maps.LatLng(26.053689,119.291139);
     var map = new qq.maps.Map(document.getElementById("container"), {
         center: center,
         zoom: 19
