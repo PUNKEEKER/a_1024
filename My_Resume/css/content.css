@@ -4,6 +4,14 @@
 li{
     list-style: none;
 }
+@font-face {
+    font-family: 'Kaushan Script';
+    src:url(../font/KaushanScript.ttf);
+}
+@font-face {
+    font-family: Candara;
+    src:url(../font/Candara.ttf);
+}
 .section:nth-child(1){
     padding: 0;
     /*padding-top: 100px;*/
@@ -220,7 +228,7 @@ li{
 }
 
 .skill h1{
-    font-family: "Kaushan Script", cursive;
+    font-family: "Kaushan Script";
     font-size: 50px;
     font-weight: 700;
     animation: skill_t .7s infinite;
